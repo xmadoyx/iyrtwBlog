@@ -1,2 +1,2 @@
 # iyrtwBlog
-If You're Reading This... Waiy
+If You're Reading This... Wait
