@@ -7,12 +7,14 @@
     <link rel="stylesheet" href="{% static 'styles.css' %}">
   </head>
   <body>
-    <h1>Articles List</h1>
-    {% for article in articles %}
-    <h2><a href="#">{{article.title}}</a></h2>
-    <p>{{article.snippet}}</p>
-    <p>{{article.date}}</p>
-    {% endfor %}
-    {# get a list of articles and show it to user, using 'articles' file from view.py #}
+    <div class="container">
+      <h1>Articles List</h1>
+      {% for article in articles %}
+      <h2><a href="#">{{article.title}}</a></h2>
+      <p>{{article.snippet}}</p>
+      <p>{{article.date}}</p>
+      {% endfor %}
+      {# get a list of articles and show it to user, using 'articles' file from view.py #}
+    </div>
   </body>
 </html>
