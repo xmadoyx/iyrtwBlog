@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Login</h1>
+<form class="site-form" action="{% url 'accounts:login' %}" method="post">
+  {# the class can be used in css file #}
+  {# action is in dynamic coding style by using login url from accounts app #}
+  {{form}}
+  {% csrf_token %}
+  {# passing CSRF Token to our template #}
+  {% if request.GET.next %}
+  {# getting the url from login page, and if it contained 'next', it means we're redirected there as a result of not being logged in for creating articles #}
+  <input type="hidden" name="next" value="{{request.GET.next}}">
+  {# type is hidden because we don't want to show anything to user. we just want to send the input to our view on server by its name #}
+  {# the value is the value of next coming after it #}
+  {% endif %}
+  <input type="submit" value="login">
+  {# clicking on submit, fires signup_view function from views.py, using post-method to send it to server #}
+</form>
+{% endblock %}

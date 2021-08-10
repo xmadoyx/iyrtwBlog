@@ -34,11 +34,13 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    # partially handles users' stuff
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'articles',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -126,6 +128,11 @@ STATICFILES_DIRS = (
     # BASE_DIR is the main folder that contains our project(=blog)
 )
 # static files directory
+
+MEDIA_URL = '/media/'
+# urls for media files
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+# django pulls media from this directory
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
