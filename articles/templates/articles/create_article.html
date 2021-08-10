@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{# loading static files from assets folder #}
+
+{% block content %}
+  <div class="create-article">
+    <h1>create YOUR article</h1>
+    <form class="site-form" action="{% url 'articles:create' %}" method="post" enctype="multipart/form-data">
+      {# the class can be used in css file #}
+      {# action is in dynamic coding style by using create url from articles app #}
+      {# enctype is for uploading image on server #}
+      {{form}}
+      {# this is the form that we passed create_article function in views.py #}
+      {% csrf_token %}
+      {# passing CSRF Token to our template #}
+      <input type="submit" name="" value="create">
+    </form>
+  </div>
+  <script src="{% static 'slugify.js' %}"></script>
+{% endblock %}

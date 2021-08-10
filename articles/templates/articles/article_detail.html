@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="article-detail">
+  <div class="article">
+    <img src="{{article.image.url}}" alt="">
+    {# getting source dynamically from server #}
+    <h1>{{article.title}}</h1>
+    <p>{{article.body}}</p>
+    <p>{{article.date}}</p>
+    {# get a list of articles and show it to user, using 'articles' file from view.py #}
+  </div>
+</div>
+{% endblock %}
