@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Sign up</h1>
+<form class="site-form" action="{% url 'accounts:signup' %}" method="post">
+  {# the class can be used in css file #}
+  {# action is in dynamic coding style by using signup url from accounts app #}
+  {{form}}
+  {% csrf_token %}
+  {# passing CSRF Token to our template #}
+  <input type="submit" value="signup">
+  {# clicking on submit, fires signup_view function from views.py, using post-method to send it to server #}
+</form>
+{% endblock %}
