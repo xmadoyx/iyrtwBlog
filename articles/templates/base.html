@@ -1,0 +1,58 @@
+{# static html code here that other html files extends this one #}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>
+    {% block title %}
+    iyrtW articles
+    {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+  </head>
+  <body>
+    <header>
+      <h2><a href="{% url 'articles:list' %}"><img alt="" src="{% static 'logo.jpg' %}" width="100" height="100"></a></h2>
+      {# calling list path from articles app #}
+      <nav>
+        <ul>
+          {% if user.is_authenticated %}
+          {# we can access 'user' from all of our html pages #}
+          {# if the user was logged in, we should show log out #}
+          <li>
+            <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+            {# the class can be used in css file #}
+            {# action is in dynamic coding style by using logout url from accounts app #}
+              {% csrf_token %}
+              {# passing CSRF Token to our template #}
+              <button type="submit" name="">logout</button>
+            </form>
+          </li>
+          <li>
+            <a class="highlight" href="{% url 'articles:create' %}">create new article</a>
+            {# if the user was logged in, we should also show create article #}
+          </li>
+          {% else %}
+          <li>
+            <a class="highlight" href="{% url 'accounts:login' %}">login</a>
+            {# if the user wasn't logged in, we should show login #}
+          </li>
+          <li>
+            <a class="highlight" href="{% url 'accounts:signup' %}">signup</a>
+            {# if the user wasn't logged in, we should also show signup #}
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+    <div class="wrapper">
+
+    {% block content %}
+
+    {% endblock %}
+    {# blocks used for extending in other html files #}
+
+    </div>
+  </body>
+</html>
