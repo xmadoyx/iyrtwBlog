@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+# importing our user model
 
 # Create your models here.
 class Article(models.Model):
@@ -9,8 +11,10 @@ class Article(models.Model):
     # direct access from url to the url
     body = models.TextField()
     date = models.DateTimeField(auto_now_add = True)
-    # adding thumbnail for user
-    # adding author name
+    image = models.ImageField(default='default.jpg',blank=True)
+    # adding thumbnail for articles, which is optional and uses default picture in case of (super)user not uploading one
+    author = models.ForeignKey(User,default=None,on_delete=models.CASCADE)
+    # adding user's name as author name by connecting our article model to our user model with a foregin key
 
     def __str__(self):
         return self.title
